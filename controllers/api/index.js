@@ -9,7 +9,7 @@ const commentRoutes = require('./comment-routes');
 // Routing that handles CRUD operations for users
 router.use('/user', userRoutes);
 // Routing that handles CRUD operations for blog posts
-router.use('/blog', blogRouts);
+router.use('/blog', blogRoutes);
 // Routing that handles CRUD operations for comments
 router.use('/comment', commentRoutes);
 

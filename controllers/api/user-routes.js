@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models/User');
+const User = require('../../models/User');
 // Routes in this file are prepended with '/api/user'
 
 // Route to create a new user
@@ -10,7 +10,6 @@ router.post('/', async (req, res) => {
 			password: req.body.password,
 			email: req.body.email,
 		});
-
 		// Save userId and loggedIn status to the session
 		req.session.userId = userData.id;
 		req.session.loggedIn = true;
