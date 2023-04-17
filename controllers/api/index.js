@@ -1,7 +1,8 @@
 const router = require('express').Router();
 
 const userRoutes = require('./user-routes');
-const blogRouts = require('./blog-routes');
+const blogRoutes = require('./blog-routes');
+const commentRoutes = require('./comment-routes');
 
 // Routes in this file are prepended with '/api'
 
@@ -9,5 +10,7 @@ const blogRouts = require('./blog-routes');
 router.use('/user', userRoutes);
 // Routing that handles CRUD operations for blog posts
 router.use('/blog', blogRouts);
+// Routing that handles CRUD operations for comments
+router.use('/comment', commentRoutes);
 
 module.exports = router;
