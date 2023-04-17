@@ -15,17 +15,13 @@ Blog.init(
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
-		blog_id: {
-			type: DataTypes.INTEGER,
-			references: {
-				model: 'blog',
-				key: 'id',
-			},
+		blog_content: {
+			type: DataTypes.TEXT,
 		},
 		author_id: {
 			type: DataTypes.INTEGER,
 			references: {
-				model: 'user',
+				model: 'users',
 				key: 'id',
 			},
 		},

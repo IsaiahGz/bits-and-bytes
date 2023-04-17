@@ -1,5 +1,5 @@
 const router = require('express').Router();
-
+const Comments = require('../../models/Comments');
 // Routes in this file are prepended with '/api/comment'
 
 // Route to create a new comment
