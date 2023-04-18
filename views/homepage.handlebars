@@ -1,75 +1,58 @@
-		<nav
-			class='font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 bg-white shadow sm:items-baseline w-full'
-		>
-			<div class='mb-2 sm:mb-0'>
-				<a href='/home' class='text-4xl no-underline text-grey-darkest hover:text-blue-dark'>Home</a>
-			</div>
-			<div>
-				<a href='/one' class='text-2xl no-underline text-grey-darkest hover:text-blue-dark mr-4'>One</a>
-				<a href='/two' class='text-2xl no-underline text-grey-darkest hover:text-blue-dark mr-4'>Two</a>
-				<a href='/three' class='text-2xl no-underline text-grey-darkest hover:text-blue-dark mr-4'>Three</a>
-			</div>
-		</nav>
+<nav class='font-sans flex flex-row justify-between py-4 px-6 bg-white shadow items-center w-full'>
+	<div class='flex items-center'>
+		<img src='/images/blog-logo.png' alt='Bits and bytes logo' class='h-20 w-20 mr-2' />
+		<a href='/home' class='home-header text-4xl no-underline text-grey-darkest hover:text-blue-dark' id='title'>Bits and Bytes</a>
+	</div>
+	<div>
+		<a href='/one' class='text-2xl no-underline text-grey-darkest hover:text-blue-dark mr-4'>One</a>
+		<a href='/two' class='text-2xl no-underline text-grey-darkest hover:text-blue-dark mr-4'>Two</a>
+		<a href='/three' class='text-2xl no-underline text-grey-darkest hover:text-blue-dark mr-4'>Three</a>
+	</div>
+</nav>
 
-		<div class='flex flex-wrap container mx-auto'>
-			<div class='w-full order-2 md:w-3/4 md:order-1'>
-				<section>
-					<h1> Main Content</h1>
-					<div class='max-w-sm rounded overflow-hidden shadow-lg mx-auto'>
-						<div class='px-6 py-4'>
-							<div class='font-bold text-xl mb-2'>The Code</div>
-							<p class='text-gray-700 text-base'>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque,
-								exercitationem praesentium nihil.
-							</p>
-						</div>
-						<div class='px-6 pt-4 pb-2'>
-							<span
-								class='inline-block bg-gray-200 hover:bg-gray-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'
-							>#python</span>
-							<span
-								class='inline-block bg-gray-200 hover:bg-gray-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'
-							>#java</span>
-						</div>
-					</div>
-					<div class='max-w-sm rounded overflow-hidden shadow-lg mx-auto'>
-						<div class='px-6 py-4'>
-							<div class='font-bold text-xl mb-2'>The Code</div>
-							<p class='text-gray-700 text-base'>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque,
-								exercitationem praesentium nihil.
-							</p>
-						</div>
-						<div class='px-6 pt-4 pb-2'>
-							<span
-								class='inline-block bg-gray-200 hover:bg-gray-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'
-							>#python</span>
-							<span
-								class='inline-block bg-gray-200 hover:bg-gray-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'
-							>#java</span>
-						</div>
-					
-				</section>
-			</div>
-			<div class='w-full order-1 md:w-1/4 md:order-2 relative'>
-				<div class='lg:fixed mx-auto text-center content-center mt-6 block'>
-
-					<section>
-						<h2>Side Bar</h2>
-						<div class='text-2xl'>Recommended topics</div>
-					</section>
-					<div class='px-6 pt-4 pb-2'>
-						<span
-							class='inline-block bg-gray-200 hover:bg-gray-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'
-						>#javascript</span>
-						<span
-							class='inline-block bg-gray-200 hover:bg-gray-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'
-						>#css</span>
-						<span
-							class='inline-block bg-gray-200 hover:bg-gray-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'
-						>#html</span>
-					</div>
+<div class='flex flex-wrap container mx-auto'>
+	<div class='w-full order-2 md:w-3/4 md:order-1'>
+		<section>
+			<h1> Main Content</h1>
+			<div class='max-w-sm rounded overflow-hidden shadow-lg mx-auto bg-purple-100'>
+				<div class='px-6 py-4 my-8'>
+					<div class='font-bold text-xl mb-2'>The Code</div>
+					<p class='text-gray-700 text-base'>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem
+						praesentium nihil.
+					</p>
+				</div>
+				<div class='px-6 pt-4 pb-2'>
+					<span
+						class='inline-block bg-purple-200 hover:bg-purple-400 rounded-full px-3 py-1 text-sm font-semibold text-purple-700 mr-2 mb-2'
+					>#python</span>
+					<span
+						class='inline-block bg-purple-200 hover:bg-purple-400 rounded-full px-3 py-1 text-sm font-semibold text-purple-700 mr-2 mb-2'
+					>#java</span>
 				</div>
 			</div>
 
+		</section>
+	</div>
+	<div class='w-full order-1 md:w-1/4 md:order-2 relative'>
+		<div class='lg:fixed mx-auto text-center content-center mt-6 block'>
+
+			<section>
+				<h2>Side Bar</h2>
+				<div class='text-2xl'>Recommended topics</div>
+			</section>
+			<div class='px-6 pt-4 pb-2'>
+				<span
+					class='inline-block bg-purple-200 hover:bg-purple-400 rounded-full px-3 py-1 text-sm font-semibold text-purple-700 mr-2 mb-2'
+				>#javascript</span>
+				<span
+					class='inline-block bg-purple-200 hover:bg-purple-400 rounded-full px-3 py-1 text-sm font-semibold text-purple-700 mr-2 mb-2'
+				>#css</span>
+				<span
+					class='inline-block bg-purple-200 hover:bg-purple-400 rounded-full px-3 py-1 text-sm font-semibold text-purple-700 mr-2 mb-2'
+				>#html</span>
+			</div>
 		</div>
+	</div>
+
+</div>
