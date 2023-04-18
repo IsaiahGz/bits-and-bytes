@@ -7,13 +7,13 @@
 					<h1 class='text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white'>
 						Sign in to your account
 					</h1>
-					<form class='space-y-4 md:space-y-6' action='#'>
+					<form id="login-form" class='space-y-4 md:space-y-6' action='#'>
 						<div>
 							<label for='email' class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>Your email</label>
 							<input
 								type='email'
 								name='email'
-								id='email'
+								id='login-email'
 								class='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
 								placeholder='name@company.com'
 								required=''
@@ -24,28 +24,11 @@
 							<input
 								type='password'
 								name='password'
-								id='password'
+								id='login-password'
 								placeholder='••••••••'
 								class='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
 								required=''
 							/>
-						</div>
-						<div class='flex items-center justify-between'>
-							<div class='flex items-start'>
-								<div class='flex items-center h-5'>
-									<input
-										id='remember'
-										aria-describedby='remember'
-										type='checkbox'
-										class='w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800'
-										required=''
-									/>
-								</div>
-								<div class='ml-3 text-sm'>
-									<label for='remember' class='text-gray-500 dark:text-gray-300'>Remember me</label>
-								</div>
-							</div>
-							<a href='#' class='text-sm font-medium text-blue-600 hover:underline dark:text-blue-500'>Forgot password?</a>
 						</div>
 						<button
 							type='submit'
@@ -53,6 +36,9 @@
 						>
 							Sign in
 						</button>
+						<div id="login-error" class="hidden mt-5">
+							<p class="text-red-400 text-md italic">Error logging in.</p>
+						</div>
 					</form>
 				</div>
 			</div>
@@ -61,46 +47,46 @@
 			<div class='w-full bg-white rounded-lg shadow dark:border sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700'>
 				<div class='p-6 space-y-4 md:space-y-6 sm:p-8'>
 					<h1 class='text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white'>Create an account</h1>
-					<form class='space-y-4 md:space-y-6' action='#'>
+					<form id="register-form" class='space-y-4 md:space-y-6' action='#'>
 						<div>
-							<label for='register_email' class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>Your email</label>
+							<label for='register-email' class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>Your email</label>
 							<input
 								type='email'
-								name='register_email'
-								id='register_email'
+								name='register-email'
+								id='register-email'
 								class='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
 								placeholder='name@company.com'
 								required=''
 							/>
 						</div>
 						<div>
-							<label for='register_email' class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>Your username</label>
+							<label for='register-email' class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>Your username</label>
 							<input
 								type='input'
-								name='register_username'
-								id='register_username'
+								name='register-username'
+								id='register-username'
 								class='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
 								placeholder='username'
 								required=''
 							/>
 						</div>
 						<div>
-							<label for='register_password' class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>Password</label>
+							<label for='register-password' class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>Password</label>
 							<input
 								type='password'
-								name='register_password'
-								id='register_password'
+								name='register-password'
+								id='register-password'
 								placeholder='••••••••'
 								class='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
 								required=''
 							/>
 						</div>
 						<div>
-							<label for='register_confirm_password' class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>Confirm password</label>
+							<label for='register-confirm_password' class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>Confirm password</label>
 							<input
 								type='password'
-								name='register_confirm_password'
-								id='register_confirm_password'
+								name='register-confirm-password'
+								id='register-confirm-password'
 								placeholder='••••••••'
 								class='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
 								required=''
@@ -111,6 +97,9 @@
 							>
 								Sign up
 							</button>
+							<div id="register-error" class="hidden mt-5">
+								<p class="text-red-400 text-md italic">Error creating account.</p>
+							</div>
 						</div>
 					</form>
 				</div>
@@ -118,3 +107,5 @@
 		</div>
 	</div>
 </section>
+
+<script src="./js/login.js"></script>
