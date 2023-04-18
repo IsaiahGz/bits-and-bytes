@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const TAGS = ['java', 'node.js', 'python2', 'python3', 'sql', 'brainfuck'];
+const TAGS = ['java', 'node.js', 'python2', 'python3', 'sql'];
 
 class Blog extends Model {}
 
@@ -25,11 +25,11 @@ Blog.init(
 				model: 'users',
 				key: 'id',
 			},
-			tags: {
-				type: DataTypes.ENUM(...TAGS),
-				allowNull: false,
-				defaultValue: TAGS[0],
-			},
+		},
+		tags: {
+			type: DataTypes.ENUM(...TAGS),
+			allowNull: false,
+			defaultValue: TAGS[0],
 		},
 	},
 
