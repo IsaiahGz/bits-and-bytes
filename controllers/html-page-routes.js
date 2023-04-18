@@ -10,7 +10,11 @@ router.get('/', async (req, res) => {
 			limit: 5,
 			order: [['created_at', 'DESC']],
 		});
-		res.render('homepage', { loggedIn: req.session.loggedIn, blogData });
+		const blogs = blogData.map((blog) =>
+      blog.get({ plain: true })
+    );
+		console.log(blogs)
+		res.render('homepage', { loggedIn: req.session.loggedIn, blogs });
 	} catch (error) {
 		res.status(500).json(error);
 	}
