@@ -35,7 +35,7 @@ router.get('/logout', (req, res) => {
 			res.status(204).end();
 		});
 	};
-	res.redirect('/login');
+	res.redirect('/');
 });
 
 router.get('/blog/new', (req, res) => {
