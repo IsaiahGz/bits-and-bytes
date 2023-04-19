@@ -1,0 +1,38 @@
+<div class='flex flex-wrap container mx-auto'>
+	<div class='w-full order-2 md:w-3/4 md:order-1'>
+		<div class='flex flex-wrap mx-auto'>
+			{{#each blogs as |blog|}}
+			{{> blog-details}}
+			{{/each}}
+		</div>
+	</div>
+	<div class='w-full order-1 md:w-1/4 md:order-2 relative'>
+		<div class='lg:fixed mx-auto text-center content-center mt-6 block'>
+			<section>
+				<div class='text-2xl'>Recommended topics</div>
+			</section>
+			<div class='px-6 pt-4 pb-2'>
+				<a
+					href='/tags/java'
+					class='inline-block bg-purple-200 hover:bg-purple-400 rounded-full px-3 py-1 text-sm font-semibold text-purple-700 mr-2 mb-2'
+				>#java</a>
+				<a
+					href='/tags/node.js'
+					class='inline-block bg-purple-200 hover:bg-purple-400 rounded-full px-3 py-1 text-sm font-semibold text-purple-700 mr-2 mb-2'
+				>#node.js</a>
+				<a
+					href='/tags/python2'
+					class='inline-block bg-purple-200 hover:bg-purple-400 rounded-full px-3 py-1 text-sm font-semibold text-purple-700 mr-2 mb-2'
+				>#python2</a>
+				<a
+					href='/tags/python3'
+					class='inline-block bg-purple-200 hover:bg-purple-400 rounded-full px-3 py-1 text-sm font-semibold text-purple-700 mr-2 mb-2'
+				>#python3</a>
+				<a
+					href='/tags/sql'
+					class='inline-block bg-purple-200 hover:bg-purple-400 rounded-full px-3 py-1 text-sm font-semibold text-purple-700 mr-2 mb-2'
+				>#sql</a>
+			</div>
+		</div>
+	</div>
+</div>
