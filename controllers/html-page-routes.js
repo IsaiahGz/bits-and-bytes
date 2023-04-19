@@ -30,6 +30,16 @@ router.get('/login', (req, res) => {
 	res.render('login');
 });
 
+// GET request to render the login page. If the user is already logged in, redirect to the homepage
+router.get('/logout', (req, res) => {
+	if (req.session.loggedIn) {
+		req.session.destroy(() => {
+			res.status(204).end();
+		});
+	};
+	res.redirect('/login');
+});
+
 // GET request to render a single blog post. If no blog post is found with the provided id, respond with a 404 status code
 router.get('/blog/:blogId', async (req, res) => {
 	try {
