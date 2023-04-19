@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const fetch = require('node-fetch');
 const withAuth = require('../../utils/auth');
 
 // Routes in this file are prepended with '/api/jdoodle'
@@ -16,18 +17,24 @@ router.post('/', withAuth, async (req, res) => {
 			sql: 4,
 		};
 
-		// Check if language in request is valid
-		if (languageVersionMapping[req.body.language] === undefined) {
-			res.status(400).json({ message: `Invalid language: ${req.body.language}` });
-			return;
+		// Check if node.js is sent
+		let language = req.body.language;
+		if (language === 'node.js') {
+			language = 'nodejs';
 		}
 
+		// Check if language in request is valid
+		if (languageVersionMapping[language] === undefined) {
+			res.status(400).json({ message: `Invalid language: ${language}` });
+			return;
+		}
+		console.log('Before fetch');
 		const response = await fetch('https://api.jdoodle.com/v1/execute', {
 			method: 'POST',
 			body: JSON.stringify({
 				script: req.body.script,
-				language: req.body.language,
-				versionIndex: languageVersionMapping[req.body.language],
+				language: language,
+				versionIndex: languageVersionMapping[language],
 				clientId: process.env.JDOODLE_ID,
 				clientSecret: process.env.JDOODLE_SECRET,
 			}),
@@ -35,11 +42,10 @@ router.post('/', withAuth, async (req, res) => {
 				'Content-Type': 'application/json',
 			},
 		});
-
 		const data = await response.json();
-
 		res.json(data);
 	} catch (err) {
+		console.log(err);
 		res.status(500).json(err);
 	}
 });
