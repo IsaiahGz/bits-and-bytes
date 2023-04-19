@@ -5,9 +5,9 @@ const blogs = [
 		id: 1,
 		title: 'Exploring the Depths of the Ocean',
 		blog_content:
-			'The ocean is a vast and mysterious place, home to countless species of marine life. From the colorful coral reefs to the darkest depths, there is always something new to discover. In this blog, we will delve into the wonders of the ocean and uncover some of its hidden secrets.',
+			'The ocean is a vast and mysterious place, home to countless species of marine life. From the colorful coral reefs to the darkest depths, there is always something new to discover.\n```\nconsole.log("Hi there", 1 + 1)\n```\n In this blog, we will delve into the wonders of the ocean and uncover some of its hidden secrets.',
 		author_id: 1,
-		tags: 'java',
+		tags: 'node.js',
 	},
 	{
 		id: 2,
