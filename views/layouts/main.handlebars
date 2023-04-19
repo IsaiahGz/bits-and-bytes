@@ -10,7 +10,7 @@
 		<link href='https://fonts.googleapis.com/css2?family=Schibsted+Grotesk&family=Source+Code+Pro:wght@600&display=swap' rel='stylesheet' />
 		<link rel='stylesheet' type='text/css' href='/css/style.css' />
 		<script src='https://cdn.tailwindcss.com'></script>
-		<script src="https://kit.fontawesome.com/626bad0e5e.js" crossorigin="anonymous"></script>
+		<script src='https://kit.fontawesome.com/626bad0e5e.js' crossorigin='anonymous'></script>
 	</head>
 
 	<body class='bg-gray-100'>
@@ -22,13 +22,13 @@
 			<div>
 				{{#if loggedIn}}
 					<h1>{{username}}</h1>
-					<a href='/logout' class='text-2xl no-underline text-grey-darkest hover:text-blue-dark mr-4 hide'>Logout</a>
+					<a href='/blog/new' class='mr-6'><i class='fa-solid fa-pencil'></i>Write Post</a>
+					<a href='/logout' class='text-2xl no-underline text-grey-darkest hover:text-blue-dark mr-6'>Logout</a>
 				{{else}}
-					<a href='/login' class='text-2xl no-underline text-grey-darkest hover:text-blue-dark mr-4 show'>Login</a>
+					<a href='/login' class='text-2xl no-underline text-grey-darkest hover:text-blue-dark mr-4'>Login</a>
 				{{/if}}
 			</div>
 		</nav>
 		{{{body}}}
 	</body>
-
 </html>
