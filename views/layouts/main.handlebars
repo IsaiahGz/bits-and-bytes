@@ -11,12 +11,43 @@
 		<link rel='stylesheet' type='text/css' href='/css/style.css' />
 		<script src='https://cdn.tailwindcss.com'></script>
 		<script src='https://kit.fontawesome.com/626bad0e5e.js' crossorigin='anonymous'></script>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css" integrity="sha512-hasIneQUHlh06VNBe7f6ZcHmeRTLIaQWFd43YriJ0UND19bvYRauxthDg8E4eVNPm9bRUhr5JGeqH7FRFXQu5g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js" integrity="sha512-bgHRAiTjGrzHzLyKOnpFvaEpGzJet3z4tZnXGjpsCcqOnAH6VGUx9frc5bcIhKTVLEiCO6vEhNAgx5jtLUYrfA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/javascript.min.js" integrity="sha512-/PyN7qb/AgAY5toh7Aq89f/DXt8AWSUxx++9ILRU/D4QwgjE3avvxL2Wi/Ft3aT22kzp29kgKc0o6GwTb+Jmnw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js" integrity="sha512-YulS+eyi43Y7kdDoXxhCnsH8OlBesGO1kJ31qeCLSYkhB0X0/onxXa5xEe6FK71WGx6eQlAEaeTdwbGdtOU7Zw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/sql.min.js" integrity="sha512-Peqqjy5bIeDold17e/HyMQqnfD3r1Bl64zCs6HM51YrJqToF/3fPwkvrdYvEFtdlKDOLPA8j9EcEjAVlUHKiaw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/java.min.js" integrity="sha512-q/u4kyu81EzgKqKU/DkkkkK+7VvaGlXUAJDO5dalSHbDap/D/smEW881gaIURe6bh3FjKxGkW/w6MKgjI8Eorw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<link
+			rel='stylesheet'
+			href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css'
+			integrity='sha512-hasIneQUHlh06VNBe7f6ZcHmeRTLIaQWFd43YriJ0UND19bvYRauxthDg8E4eVNPm9bRUhr5JGeqH7FRFXQu5g=='
+			crossorigin='anonymous'
+			referrerpolicy='no-referrer'
+		/>
+		<script
+			src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js'
+			integrity='sha512-bgHRAiTjGrzHzLyKOnpFvaEpGzJet3z4tZnXGjpsCcqOnAH6VGUx9frc5bcIhKTVLEiCO6vEhNAgx5jtLUYrfA=='
+			crossorigin='anonymous'
+			referrerpolicy='no-referrer'
+		></script>
+		<script
+			src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/javascript.min.js'
+			integrity='sha512-/PyN7qb/AgAY5toh7Aq89f/DXt8AWSUxx++9ILRU/D4QwgjE3avvxL2Wi/Ft3aT22kzp29kgKc0o6GwTb+Jmnw=='
+			crossorigin='anonymous'
+			referrerpolicy='no-referrer'
+		></script>
+		<script
+			src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js'
+			integrity='sha512-YulS+eyi43Y7kdDoXxhCnsH8OlBesGO1kJ31qeCLSYkhB0X0/onxXa5xEe6FK71WGx6eQlAEaeTdwbGdtOU7Zw=='
+			crossorigin='anonymous'
+			referrerpolicy='no-referrer'
+		></script>
+		<script
+			src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/sql.min.js'
+			integrity='sha512-Peqqjy5bIeDold17e/HyMQqnfD3r1Bl64zCs6HM51YrJqToF/3fPwkvrdYvEFtdlKDOLPA8j9EcEjAVlUHKiaw=='
+			crossorigin='anonymous'
+			referrerpolicy='no-referrer'
+		></script>
+		<script
+			src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/java.min.js'
+			integrity='sha512-q/u4kyu81EzgKqKU/DkkkkK+7VvaGlXUAJDO5dalSHbDap/D/smEW881gaIURe6bh3FjKxGkW/w6MKgjI8Eorw=='
+			crossorigin='anonymous'
+			referrerpolicy='no-referrer'
+		></script>
 	</head>
 
 	<body class='bg-gray-100'>
@@ -29,7 +60,7 @@
 				{{#if loggedIn}}
 					<h1>{{username}}</h1>
 					<a href='/blog/new' class='mr-6'><i class='fa-solid fa-pencil'></i>Write Post</a>
-					<a href='/logout' class='text-2xl no-underline text-grey-darkest hover:text-blue-dark mr-6'>Logout</a>
+					<button class='text-2xl no-underline text-grey-darkest hover:text-blue-dark mr-6' id='logout-button'>Logout</button>
 				{{else}}
 					<a href='/login' class='text-2xl no-underline text-grey-darkest hover:text-blue-dark mr-4'>Login</a>
 				{{/if}}
@@ -37,4 +68,5 @@
 		</nav>
 		{{{body}}}
 	</body>
+	<script src='/js/main.js'></script>
 </html>
