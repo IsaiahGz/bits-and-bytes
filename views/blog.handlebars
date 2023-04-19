@@ -1,33 +1,86 @@
 <div class='container mx-auto px-4 py-8'>
-	<div class='grid grid-cols-1 md:grid-cols-4 gap-8'>
-		<div class='col-span-3'>
-			<div class='bg-white shadow-lg rounded-lg p-8'>
+    <div class='grid grid-cols-1 md:grid-cols-4 gap-8'>
+        <div class='col-span-3'>
+           <div class='bg-white shadow-lg rounded-lg p-8'>
 				<h1 class='text-3xl font-semibold mb-4 text-purple-600'>{{blog.title}}</h1>
 				<p class='text-sm text-gray-500 mb-4'>By {{blog.user.username}}</p>
 				<p class='text-gray-700 leading-relaxed' id='blog-content'></p>
 			</div>
-		</div>
-		<div class='col-span-1'>
+
+            <form class='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-8'>
+				<div class='mb-4'>
+					<h1 class='text-2xl text-purple-500 font-bold my-6'>Leave a comment</h1>
+					<label class='block text-gray-500 mb-2' for='content'> Comment: </label>
+					<textarea
+						class='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32 resize-none'
+						id='content'
+						placeholder='Enter blog post content'
+					></textarea>
+					
+				</div>
+				<button
+				class='bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline justify-end'
+				type='button'
+			>
+				Submit
+			</button>
+			</form>
+			
+            <div class='bg-white shadow-lg rounded-lg p-8 mt-8'>
+                <h2 class="text-2xl font-semibold mb-4 text-purple-600">Comments</h2>
+                <div class="border-b border-purple-200 mb-6"></div>
+                <div class="mb-6">
+                    <div class="font-semibold text-lg text-purple-700">Username</div>
+                    <div class="text-sm text-gray-500 mb-2">Date posted</div>
+                    <p class="text-gray-700">This is a comment example. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+				<div class="mb-6">
+                    <div class="font-semibold text-lg text-purple-700">Username</div>
+                    <div class="text-sm text-gray-500 mb-2">Date posted</div>
+                    <p class="text-gray-700">This is a comment example. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+				<div class="mb-6">
+                    <div class="font-semibold text-lg text-purple-700">Username</div>
+                    <div class="text-sm text-gray-500 mb-2">Date posted</div>
+                    <p class="text-gray-700">This is a comment example. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+        </div>
+        <div class='col-span-1'>
+           <div class='col-span-1'>
 			<section>
 				<h2>Side Bar</h2>
 				<div class='text-2xl'>Recommended topics</div>
 			</section>
 			<div class='px-6 pt-4 pb-2'>
-				<span
+				<a
+					href='/tags/java'
 					class='inline-block bg-purple-200 hover:bg-purple-400 rounded-full px-3 py-1 text-sm font-semibold text-purple-700 mr-2 mb-2'
-				>#javascript</span>
-				<span
+				>#java</a>
+				<a
+					href='/tags/node.js'
 					class='inline-block bg-purple-200 hover:bg-purple-400 rounded-full px-3 py-1 text-sm font-semibold text-purple-700 mr-2 mb-2'
-				>#css</span>
-				<span
+				>#node.js</a>
+				<a
+					href='/tags/python2'
 					class='inline-block bg-purple-200 hover:bg-purple-400 rounded-full px-3 py-1 text-sm font-semibold text-purple-700 mr-2 mb-2'
-				>#html</span>
+				>#python2</a>
+				<a
+					href='/tags/python3'
+					class='inline-block bg-purple-200 hover:bg-purple-400 rounded-full px-3 py-1 text-sm font-semibold text-purple-700 mr-2 mb-2'
+				>#python3</a>
+				<a
+					href='/tags/sql'
+					class='inline-block bg-purple-200 hover:bg-purple-400 rounded-full px-3 py-1 text-sm font-semibold text-purple-700 mr-2 mb-2'
+				>#sql</a>
 			</div>
-		</div>
-	</div>
+        </div>
+    </div>
 </div>
+
 <script>
 	const blogData =
 	{{{json blog}}}
 </script>
 <script src='/js/blog.js'></script>
+

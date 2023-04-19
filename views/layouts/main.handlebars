@@ -58,8 +58,10 @@
 			</div>
 			<div>
 				{{#if loggedIn}}
-					<h1>{{username}}</h1>
-					<a href='/blog/new' class='mr-6'><i class='fa-solid fa-pencil'></i>Write Post</a>
+					<p class='text-2xl no-underline text-grey-darkest hover:text-blue-dark mr-6 inline'>{{username}}</p>
+					<a href='/blog/new' class='text-2xl no-underline text-grey-darkest hover:text-blue-dark mr-6'><i
+							class='fa-solid fa-pencil'
+						></i>Write Post</a>
 					<button class='text-2xl no-underline text-grey-darkest hover:text-blue-dark mr-6' id='logout-button'>Logout</button>
 				{{else}}
 					<a href='/login' class='text-2xl no-underline text-grey-darkest hover:text-blue-dark mr-4'>Login</a>
