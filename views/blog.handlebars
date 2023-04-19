@@ -3,7 +3,7 @@
 		<div class='col-span-3'>
 			<div class='bg-white shadow-lg rounded-lg p-8'>
 				<h1 class='text-3xl font-semibold mb-4 text-purple-600'>{{blog.title}}</h1>
-				<p class='text-sm text-gray-500 mb-4'>Author Name - April 19, 2023</p>
+				<p class='text-sm text-gray-500 mb-4'>By {{blog.user.username}}</p>
 				<p class='text-gray-700 leading-relaxed' id='blog-content'></p>
 			</div>
 		</div>
@@ -27,6 +27,7 @@
 	</div>
 </div>
 <script>
-	const blogData = {{{json blog}}}
+	const blogData =
+	{{{json blog}}}
 </script>
 <script src='/js/blog.js'></script>
