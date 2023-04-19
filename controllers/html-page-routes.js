@@ -10,10 +10,8 @@ router.get('/', async (req, res) => {
 			limit: 5,
 			order: [['created_at', 'DESC']],
 		});
-		const blogs = blogData.map((blog) =>
-      blog.get({ plain: true })
-    );
-		console.log(blogs)
+		// Remove unnecessary data from the blog post objects
+		const blogs = blogData.map((blog) => blog.get({ plain: true }));
 		res.render('homepage', { loggedIn: req.session.loggedIn, blogs });
 	} catch (error) {
 		res.status(500).json(error);
@@ -30,6 +28,11 @@ router.get('/login', (req, res) => {
 	res.render('login');
 });
 
+router.get('/blog/new', (req, res) => {
+	// TODO: Must be logged in to create a new blog post/view this page
+	res.render('new-blog', { loggedIn: req.session.loggedIn });
+});
+
 // GET request to render a single blog post. If no blog post is found with the provided id, respond with a 404 status code
 router.get('/blog/:blogId', async (req, res) => {
 	try {
@@ -38,15 +41,12 @@ router.get('/blog/:blogId', async (req, res) => {
 			res.status(404).json({ message: 'No blog post found with this id' });
 			return;
 		}
-		res.render('blog', { blogData, loggedIn: req.session.loggedIn });
+		// Remove unnecessary data from the blog post object
+		const blog = blogData.get({ plain: true });
+		res.render('blog', { blog, loggedIn: req.session.loggedIn });
 	} catch (error) {
 		res.status(500).json(error);
 	}
-});
-
-router.get('/blog/new', (req, res) => {
-	// TODO: Must be logged in to create a new blog post/view this page
-	res.render('new-blog');
 });
 
 router.get('/blog/edit/:blogId', async (req, res) => {
@@ -61,7 +61,7 @@ router.get('/blog/edit/:blogId', async (req, res) => {
 			res.status(404).json({ message: 'No blog post found with this id' });
 			return;
 		}
-		res.render('edit-blog', { blogData });
+		res.render('edit-blog', { blogData, loggedIn: req.session.loggedIn });
 	} catch (error) {
 		res.status(500).json(error);
 	}
