@@ -28,6 +28,16 @@ router.get('/login', (req, res) => {
 	res.render('login');
 });
 
+// GET request to log out. Log out the user and redirect to homepage
+router.get('/logout', (req, res) => {
+	if (req.session.loggedIn) {
+		req.session.destroy(() => {
+			res.status(204).end();
+		});
+	};
+	res.redirect('/');
+});
+
 router.get('/blog/new', (req, res) => {
 	// TODO: Must be logged in to create a new blog post/view this page
 	res.render('new-blog', { loggedIn: req.session.loggedIn });
