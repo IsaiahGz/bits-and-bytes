@@ -28,7 +28,7 @@ router.get('/login', (req, res) => {
 	res.render('login');
 });
 
-// GET request to log out. Log out the user and redirect to login page
+// GET request to log out. Log out the user and redirect to homepage
 router.get('/logout', (req, res) => {
 	if (req.session.loggedIn) {
 		req.session.destroy(() => {
