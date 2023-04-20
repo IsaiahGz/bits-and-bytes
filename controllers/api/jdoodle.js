@@ -28,7 +28,6 @@ router.post('/', withAuth, async (req, res) => {
 			res.status(400).json({ message: `Invalid language: ${language}` });
 			return;
 		}
-		console.log('Before fetch');
 		const response = await fetch('https://api.jdoodle.com/v1/execute', {
 			method: 'POST',
 			body: JSON.stringify({
@@ -45,7 +44,6 @@ router.post('/', withAuth, async (req, res) => {
 		const data = await response.json();
 		res.json(data);
 	} catch (err) {
-		console.log(err);
 		res.status(500).json(err);
 	}
 });

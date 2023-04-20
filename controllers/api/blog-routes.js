@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const withAuth = require('../../utils/auth');
-const Blog = require('../../models/Blog');
+const { Blog } = require('../../models');
 // Routes in this file are prepended with '/api/blog'
 
 // Route to create a new blog post (requires user to be logged in)

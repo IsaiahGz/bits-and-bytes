@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const User = require('../../models/User');
+const { User } = require('../../models');
 // Routes in this file are prepended with '/api/user'
 
 // Route to create a new user

@@ -27,6 +27,9 @@ const hbs = exphbs.create({
 		json: function (context) {
 			return JSON.stringify(context);
 		},
+		matches: function (val1, val2) {
+			return val1 === val2;
+		},
 	},
 });
 
