@@ -33,18 +33,17 @@ const hbs = exphbs.create({
 		selectInput: function (val1, val2) {
 			if (val1 === val2) {
 				return 'selected';
-			} else 
-			return "";
+			} else return '';
 		},
 		formatBlogText: function (text) {
 			// Replace all occurrences of # and ` with an empty string
 			const cleanedText = text.replace(/[#`]/g, '');
-		  
+
 			// Replace markdown headings with spaces, so that they appear as regular text
 			const formattedText = cleanedText.replace(/(#+)(.*)/g, '$2');
-		  
+
 			return formattedText;
-		  }
+		},
 	},
 });
 

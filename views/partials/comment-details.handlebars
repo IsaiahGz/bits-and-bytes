@@ -1,0 +1,17 @@
+<div class='mb-6'>
+	<div class='font-semibold text-lg text-purple-700 inline'>{{user.username}}</div>
+	{{#if (matches username user.username)}}
+		<div class='float-right'>
+			<button data-commentid="{{id}}" class='bg-red-100 hover:bg-red-200 rounded p-1 delete-comment'><i class='fa-solid fa-trash mr-1'></i>Delete</button>
+			<button data-commentid="{{id}}" class='bg-green-100 hover:bg-green-200 rounded p-1 edit-comment'><i class='fa-solid fa-pen-to-square mr-1'></i>Edit</button></a>
+		</div>
+	{{/if}}
+	<div class='text-sm text-gray-500 mb-2'>{{created_at}}</div>
+	<p id='comment-text-id-{{id}}' class='text-gray-700'>{{commentText}}</p>
+	<div id="comment-edit-id-{{id}}" class='hidden'>
+		<textarea id='comment-edit-text-id-{{id}}' class='w-full h-24 border border-gray-300 rounded p-2 mb-2' placeholder='Edit your comment here...'>{{commentText}}</textarea>
+		<button data-commentid="{{id}}" id='comment-edit-btn-id-{{id}}' class='bg-green-100 hover:bg-green-200 rounded p-1 edit-save-comment'>Save</button>
+		<button data-commentid="{{id}}" id='comment-edit-btn-cancel-id-{{id}}' class='bg-red-100 hover:bg-red-200 rounded p-1 edit-cancel-comment'>Cancel</button>
+	</div>
+</div>
+
