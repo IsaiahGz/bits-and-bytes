@@ -75,7 +75,7 @@ router.get('/blog/edit/:blogId', async (req, res) => {
 		const blogData = await Blog.findByPk(req.params.blogId);
 		// Must be author of blog post to edit it
 		if (blogData.author_id !== req.session.userId) {
-			res.status(403).json({ message: 'You are not authorized to edit this blog post as you are not the owner' });
+			res.status(403).redirect(`/blog/${req.params.blogId}`);
 			return;
 		}
 		if (!blogData) {

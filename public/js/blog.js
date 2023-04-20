@@ -31,31 +31,37 @@ const createCodeRunElement = (rawCodeString, language) => {
 	const codeRunDiv = document.createElement('div');
 
 	// Create a div to display the output of the code
-	const outputDiv = document.createElement('div');
-	outputDiv.classList.add('bg-purple-100', 'rounded-lg')
+	const outputDiv = document.createElement('pre');
+	outputDiv.classList.add('bg-purple-100', 'rounded-lg', 'p-2', 'mt-1', 'hidden');
 
 	// Create a button to run the code
 	const runCodeButton = document.createElement('button');
-	runCodeButton.classList.add('rounded-full', 'bg-purple-300', 'border-8', 'border-purple-300', 'mt-1', 'text-purple-800')
-	runCodeButton.addEventListener('click', async () => {
-		// Send a POST request to the jDoodle API endpoint
-		const response = await fetch('/api/jdoodle', {
-			method: 'POST',
-			body: JSON.stringify({ script: rawCodeString, language }),
-			headers: { 'Content-Type': 'application/json' },
+	runCodeButton.classList.add('rounded-full', 'bg-purple-300', 'border-8', 'border-purple-300', 'mt-1', 'text-purple-800');
+	if (loggedIn) {
+		runCodeButton.addEventListener('click', async () => {
+			// Send a POST request to the jDoodle API endpoint
+			const response = await fetch('/api/jdoodle', {
+				method: 'POST',
+				body: JSON.stringify({ script: rawCodeString, language }),
+				headers: { 'Content-Type': 'application/json' },
+			});
+			// Get response JSON
+			const responseJSON = await response.json();
+			// Check if responseJSON has a output property and if so, use that as the output
+			if (responseJSON.output) {
+				outputDiv.textContent = responseJSON.output;
+			} else if (responseJSON.error) {
+				outputDiv.textContent = responseJSON.error;
+			} else {
+				outputDiv.textContent = 'Something went wrong';
+			}
+			outputDiv.classList.remove('hidden');
 		});
-		// Get response JSON
-		const responseJSON = await response.json();
-		// Check if responseJSON has a output property and if so, use that as the output
-		if (responseJSON.output) {
-			outputDiv.textContent = responseJSON.output;
-		} else if (responseJSON.error) {
-			outputDiv.textContent = responseJSON.error;
-		} else {
-			outputDiv.textContent = 'Something went wrong';
-		}
-	});
-	runCodeButton.textContent = 'Run Code';
+		runCodeButton.textContent = 'Run Code';
+	} else {
+		runCodeButton.disabled = true;
+		runCodeButton.textContent = 'Log in to run code';
+	}
 
 	// Append the button and output div to the codeRunDiv and return it
 	codeRunDiv.appendChild(runCodeButton);
@@ -85,19 +91,19 @@ const parseBlogContent = (blogContent, language, renderCodeRun = true) => {
 			const header4 = document.createElement('h4');
 			const trimmedText = blogContentArray[i].substring(3).trim();
 			header4.textContent = trimmedText;
-			header4.classList.add('text-xl')
+			header4.classList.add('text-xl');
 			elements.push(header4);
 		} else if (blogContentArray[i].startsWith('##')) {
 			const header3 = document.createElement('h3');
 			const trimmedText = blogContentArray[i].substring(2).trim();
 			header3.textContent = trimmedText;
-			header3.classList.add('text-2xl', 'font-semibold')
+			header3.classList.add('text-2xl', 'font-semibold');
 			elements.push(header3);
 		} else if (blogContentArray[i].startsWith('#')) {
 			const header2 = document.createElement('h2');
 			const trimmedText = blogContentArray[i].substring(1).trim();
 			header2.textContent = trimmedText;
-			header2.classList.add('text-3xl', 'font-bold')
+			header2.classList.add('text-3xl', 'font-bold');
 			elements.push(header2);
 		} else if (blogContentArray[i].startsWith('```')) {
 			// Check if the string is a code block
