@@ -157,6 +157,10 @@ if (!loggedIn) {
 	submitCommentButton.addEventListener('click', async () => {
 		// Get the comment text
 		const commentText = document.querySelector('#comment-content').value;
+		if (commentText.length === 0) {
+			// The comment text is empty, dont send a request
+			return;
+		}
 		// Send a POST request to the comment endpoint
 		const response = await fetch(`/api/comment`, {
 			method: 'POST',
