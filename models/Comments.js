@@ -11,12 +11,9 @@ Comments.init(
 			primaryKey: true,
 			autoIncrement: true,
 		},
-		title: {
-			type: DataTypes.STRING,
-			allowNull: false,
-		},
 		commentText: {
 			type: DataTypes.TEXT,
+			allowNull: false,
 		},
 		blog_id: {
 			type: DataTypes.INTEGER,
