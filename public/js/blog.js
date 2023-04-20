@@ -30,9 +30,11 @@ const createCodeRunElement = (rawCodeString, language) => {
 
 	// Create a div to display the output of the code
 	const outputDiv = document.createElement('div');
+	outputDiv.classList.add('bg-purple-100', 'rounded-lg')
 
 	// Create a button to run the code
 	const runCodeButton = document.createElement('button');
+	runCodeButton.classList.add('rounded-full', 'bg-purple-300', 'border-8', 'border-purple-300', 'mt-1', 'text-purple-800')
 	runCodeButton.addEventListener('click', async () => {
 		// Send a POST request to the jDoodle API endpoint
 		const response = await fetch('/api/jdoodle', {
@@ -81,21 +83,24 @@ const parseBlogContent = (blogContent, language, renderCodeRun = true) => {
 			const header4 = document.createElement('h4');
 			const trimmedText = blogContentArray[i].substring(3).trim();
 			header4.textContent = trimmedText;
+			header4.classList.add('text-xl')
 			elements.push(header4);
 		} else if (blogContentArray[i].startsWith('##')) {
 			const header3 = document.createElement('h3');
 			const trimmedText = blogContentArray[i].substring(2).trim();
 			header3.textContent = trimmedText;
+			header3.classList.add('text-2xl', 'font-semibold')
 			elements.push(header3);
 		} else if (blogContentArray[i].startsWith('#')) {
 			const header2 = document.createElement('h2');
 			const trimmedText = blogContentArray[i].substring(1).trim();
 			header2.textContent = trimmedText;
+			header2.classList.add('text-3xl', 'font-bold')
 			elements.push(header2);
 		} else if (blogContentArray[i].startsWith('```')) {
 			// Check if the string is a code block
 			const codeBlock = document.createElement('pre');
-			codeBlock.classList.add('code-block');
+			codeBlock.classList.add('code-block', 'p-2');
 			// Collect raw code block text to send to jDoodle API
 			let rawCodeString = '';
 			// Loop through the array of strings until the end of the code block
