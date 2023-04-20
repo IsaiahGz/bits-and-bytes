@@ -51,20 +51,27 @@
 	</head>
 
 	<body class='bg-gray-100'>
-		<nav class='font-sans flex flex-row justify-between py-4 px-6 bg-white shadow items-center w-full'>
+		<nav class='font-sans flex flex-row justify-between md:py-4 md:px-6 p-2 bg-white shadow items-center w-full'>
 			<div class='flex items-center'>
-				<img src='/images/blog-logo.png' alt='Bits and bytes logo' class='h-20 w-20 mr-2' />
-				<a href='/' class='home-header text-4xl no-underline text-grey-darkest hover:text-blue-dark' id='title'>Bits and Bytes</a>
+				<img src='/images/blog-logo.png' alt='Bits and bytes logo' class='md:h-20 md:w-20 h-10 w-10 mr-2' />
+				<a href='/' class='home-header md:text-4xl text-xl no-underline text-grey-darkest hover:text-blue-dark' id='title'>Bits and Bytes</a>
 			</div>
 			<div>
 				{{#if loggedIn}}
-					<p class='text-2xl no-underline text-grey-darkest hover:text-blue-dark mr-6 inline'>{{username}}</p>
-					<a href='/blog/new' class='text-2xl no-underline text-grey-darkest hover:text-blue-dark mr-6'><i
-							class='fa-solid fa-pencil'
-						></i>Write Post</a>
-					<button class='text-2xl no-underline text-grey-darkest hover:text-blue-dark mr-6' id='logout-button'>Logout</button>
+					<p class='lg:text-2xl no-underline text-grey-700 hover:text-blue-dark mr-6 inline'>{{username}}</p>
+					<a
+						href='/blog/new'
+						class='md:text-xl text-base no-underline text-grey-darkest hover:bg-purple-300 mr-6 bg-purple-200 p-1 rounded-lg text-purple-800'
+					><i class='fa-solid fa-pencil'></i>Write Post</a>
+					<button
+						class='md:text-2xl text-base no-underline text-grey-darkest hover:text-blue-dark mr-6 hover:bg-purple-300 mr-6 bg-purple-200 p-1 rounded-lg text-purple-800'
+						id='logout-button'
+					>Logout</button>
 				{{else}}
-					<a href='/login' class='text-2xl no-underline text-grey-darkest hover:text-blue-dark mr-4'>Login</a>
+					<a
+						href='/login'
+						class='md:text-2xl text-base no-underline text-grey-darkest hover:text-blue-dark mr-4 hover:bg-purple-300 mr-6 bg-purple-200 p-1 rounded-lg text-purple-800'
+					>Login</a>
 				{{/if}}
 			</div>
 		</nav>
