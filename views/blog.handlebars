@@ -10,7 +10,11 @@
 				{{/if}}
 				<h1 class='text-3xl font-semibold mb-4 text-purple-600 inline'>{{blog.title}}</h1>
 				<div class='text-sm text-gray-500 mb-2'>{{blog.updatedAt}}</div>
-				<p class='text-sm text-gray-500 mb-4'>By {{blog.user.username}}</p>
+				<p class='text-sm text-gray-500 mb-4 inline'>By {{blog.user.username}}</p>
+				<a
+					href='/tags/{{blog.tags}}'
+					class='inline-block bg-purple-200 hover:bg-purple-400 rounded-full px-3 py-1 text-sm font-semibold text-purple-700 mr-2 mb-2'
+				>#{{blog.tags}}</a>
 				<p class='text-gray-700 leading-relaxed' id='blog-content'></p>
 			</div>
 
