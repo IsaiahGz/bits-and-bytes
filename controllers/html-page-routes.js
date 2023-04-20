@@ -13,10 +13,8 @@ router.get('/', async (req, res) => {
 		});
 		// Remove unnecessary data from the blog post objects
 		const blogs = blogData.map((blog) => blog.get({ plain: true }));
-		console.log(blogs);
 		res.render('homepage', { loggedIn: req.session.loggedIn, blogs, username: req.session.username });
 	} catch (error) {
-		console.log(error);
 		res.status(500).json(error);
 	}
 });
@@ -94,10 +92,8 @@ router.get('/tags/:tagName', async (req, res) => {
 		});
 		// Remove unnecessary data from the blog post objects
 		const blogs = blogData.map((blog) => blog.get({ plain: true }));
-		console.log(blogs);
 		res.render('tags', { loggedIn: req.session.loggedIn, blogs, username: req.session.username });
 	} catch (error) {
-		console.log(error);
 		res.status(500).json(error);
 	}
 });

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Comments = require('../../models/Comments');
+const { Comments } = require('../../models');
 const withAuth = require('../../utils/auth');
 // Routes in this file are prepended with '/api/comment'
 

@@ -1,3 +1,29 @@
+// Handle delete modal
+const modal = document.querySelector('#modal-delete');
+const deleteButton = document.querySelector('#blog-btn-delete');
+const cancelButton = document.querySelector('#cancel-delete');
+const confirmDeleteButton = document.querySelector('#confirm-delete');
+
+// Add modal event listeners
+deleteButton.addEventListener('click', () => {
+	console.log('delete button clicked');
+	modal.classList.remove('hidden');
+});
+
+cancelButton.addEventListener('click', () => {
+	modal.classList.add('hidden');
+});
+
+confirmDeleteButton.addEventListener('click', async () => {
+	// Send a DELETE request to the blog delete endpoint
+	const response = await fetch(`/api/blog/${blogData.id}`, {
+		method: 'DELETE',
+	});
+	console.log(response);
+	// Redirect to the homepage
+	window.location.href = '/';
+});
+
 // Given the raw code string, create an element to run the code with jDoodle API and output the result and return the element
 const createCodeRunElement = (rawCodeString, language) => {
 	const codeRunDiv = document.createElement('div');
@@ -36,6 +62,15 @@ const createCodeRunElement = (rawCodeString, language) => {
 // Given the blogContent (string), parse it and return the HTML element to be rendered
 const parseBlogContent = (blogContent, language, renderCodeRun = true) => {
 	const outerDiv = document.createElement('div'); // Outer div to hold all elements
+	if (!blogContent) {
+		// There is no blog content
+		return outerDiv;
+	}
+	if (blogContent.indexOf('\n') === -1) {
+		// There are no new lines to parse
+		outerDiv.textContent = blogContent;
+		return outerDiv;
+	}
 	// Split the blogContent string into an array of strings, each string is a line and determine if it is a header or paragraph or code block
 	const blogContentArray = blogContent.split('\n');
 	// Loop through the array of strings and build the HTML elements
