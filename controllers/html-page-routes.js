@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Blog, User } = require('../models');
+const { Blog, User, Comments } = require('../models');
 // Routes in this file are prepended with '/'
 
 // GET request to render the homepage
@@ -48,7 +48,14 @@ router.get('/blog/new', (req, res) => {
 router.get('/blog/:blogId', async (req, res) => {
 	try {
 		const blogData = await Blog.findByPk(req.params.blogId, {
-			include: [{ model: User, attributes: ['username', 'id'] }],
+			include: [
+				{ model: User, attributes: ['username', 'id'] },
+				{
+					model: Comments,
+					attributes: ['commentText', 'created_at', 'id'],
+					include: [{ model: User, attributes: ['username', 'id'] }],
+				},
+			],
 		});
 		if (!blogData) {
 			res.status(404).json({ message: 'No blog post found with this id' });
@@ -58,6 +65,7 @@ router.get('/blog/:blogId', async (req, res) => {
 		const blog = blogData.get({ plain: true });
 		res.render('blog', { blog, loggedIn: req.session.loggedIn, username: req.session.username });
 	} catch (error) {
+		console.log(error);
 		res.status(500).json(error);
 	}
 });

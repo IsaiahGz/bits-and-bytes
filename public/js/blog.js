@@ -1,28 +1,30 @@
 // Handle delete modal
-const modal = document.querySelector('#modal-delete');
-const deleteButton = document.querySelector('#blog-btn-delete');
-const cancelButton = document.querySelector('#cancel-delete');
-const confirmDeleteButton = document.querySelector('#confirm-delete');
+if (document.querySelector('#blog-btn-delete')) {
+	const modal = document.querySelector('#modal-delete');
+	const deleteButton = document.querySelector('#blog-btn-delete');
+	const cancelButton = document.querySelector('#cancel-delete');
+	const confirmDeleteButton = document.querySelector('#confirm-delete');
 
-// Add modal event listeners
-deleteButton.addEventListener('click', () => {
-	console.log('delete button clicked');
-	modal.classList.remove('hidden');
-});
-
-cancelButton.addEventListener('click', () => {
-	modal.classList.add('hidden');
-});
-
-confirmDeleteButton.addEventListener('click', async () => {
-	// Send a DELETE request to the blog delete endpoint
-	const response = await fetch(`/api/blog/${blogData.id}`, {
-		method: 'DELETE',
+	// Add modal event listeners
+	deleteButton.addEventListener('click', () => {
+		console.log('delete button clicked');
+		modal.classList.remove('hidden');
 	});
-	console.log(response);
-	// Redirect to the homepage
-	window.location.href = '/';
-});
+
+	cancelButton.addEventListener('click', () => {
+		modal.classList.add('hidden');
+	});
+
+	confirmDeleteButton.addEventListener('click', async () => {
+		// Send a DELETE request to the blog delete endpoint
+		const response = await fetch(`/api/blog/${blogData.id}`, {
+			method: 'DELETE',
+		});
+		console.log(response);
+		// Redirect to the homepage
+		window.location.href = '/';
+	});
+}
 
 // Given the raw code string, create an element to run the code with jDoodle API and output the result and return the element
 const createCodeRunElement = (rawCodeString, language) => {
@@ -139,3 +141,33 @@ const parseBlogContent = (blogContent, language, renderCodeRun = true) => {
 const blogContent = document.querySelector('#blog-content');
 // Parse the blog content and append it to the blog-content div
 blogContent.appendChild(parseBlogContent(blogData.blog_content, blogData.tags));
+
+// Add event listener to the submit comment button
+const submitCommentButton = document.querySelector('#comment-submit');
+if (!loggedIn) {
+	// If the user is not logged in, disable the submit comment button
+	submitCommentButton.disabled = true;
+} else {
+	submitCommentButton.addEventListener('click', async () => {
+		// Get the comment text
+		const commentText = document.querySelector('#comment-content').value;
+		// Send a POST request to the comment endpoint
+		const response = await fetch(`/api/comment`, {
+			method: 'POST',
+			body: JSON.stringify({ commentText: commentText, blog_id: blogData.id }),
+			headers: { 'Content-Type': 'application/json' },
+		});
+		// Get the response JSON
+		const responseJSON = await response.json();
+		// Check if the response was ok
+		if (!response.ok) {
+			// Log the error
+			console.log(responseJSON);
+		} else {
+			// Clear the input
+			document.querySelector('#comment-content').value = '';
+			// Reload the page to show the new comment
+			window.location.reload();
+		}
+	});
+}
