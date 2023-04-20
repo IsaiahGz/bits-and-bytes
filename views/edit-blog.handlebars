@@ -20,20 +20,25 @@
 			>{{blog.blog_content}}</textarea>
 		</div>
 		<div class='mb-4'>
-			<label class='block text-gray-700 font-bold mb-2' for='content'> Tag </label>
-			<input
-				class='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-				id='title'
-				type='text'
-				placeholder='Enter your tag'
-			/>
+			<div class='flex items-center mb-4'>
+			<label for='tags'>Choose a tag:</label>
+
+			<select class="ml-4 shadow border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name='tags' id='tags'>
+				<option {{selectInput blog.tags "java"}} value='java'>java</option>
+				<option {{selectInput blog.tags "node.js"}} value='node.js'>node.js</option>
+				<option {{selectInput blog.tags "python2"}} value='python2'>python2</option>
+				<option {{selectInput blog.tags "python3"}} value='python3'>python3</option>
+				<option {{selectInput blog.tags "sql"}} value='sql'>sql</option>
+			</select>
 		</div>
 		<div class='flex items-center justify-between'>
 			<button
+				id='submit-button'
 				class='bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
 				type='button'
 			>
 				Submit
+
 			</button>
 		</div>
 	</form>

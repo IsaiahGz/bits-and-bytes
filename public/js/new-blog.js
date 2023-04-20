@@ -2,9 +2,10 @@ document.getElementById('submit-button').addEventListener('click', async functio
 	event.preventDefault();
 	const title = document.getElementById('blog-title').value;
 	const content = document.getElementById('content').value;
+	const tags = document.getElementById('tags').value;
 	const response = await fetch('/api/blog', {
 		method: 'POST',
-		body: JSON.stringify({ title, blog_content: content }),
+		body: JSON.stringify({ title, blog_content: content, tags }),
 		headers: { 'Content-Type': 'application/json' },
 	});
 	const responseJSON = await response.json();
