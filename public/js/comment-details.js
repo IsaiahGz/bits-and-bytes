@@ -2,7 +2,7 @@
 const editButtons = document.querySelectorAll('.edit-comment');
 editButtons.forEach((button) => {
 	button.addEventListener('click', () => {
-		const commentId = button.dataset.commentId;
+		const commentId = button.dataset.commentid;
 		editComment(commentId);
 	});
 });
@@ -17,47 +17,57 @@ deleteButtons.forEach((button) => {
 
 // Edit a comment
 function editComment(commentId) {
-	// Get the comment element and text
-	const commentElement = document.getElementById(`comment-${commentId}`);
-	const commentTextElement = commentElement.querySelector('.comment-text');
-	const commentText = commentTextElement.textContent;
-
-	// Replace the text with an input field
-	const inputField = document.createElement('textarea');
-	inputField.value = commentText;
-	commentElement.replaceChild(inputField, commentTextElement);
-
-	// Replace the "Edit" button with a "Save" button
-	const editButton = commentElement.querySelector('.edit-comment');
-	const saveButton = document.createElement('button');
-	saveButton.textContent = 'Save';
-	saveButton.dataset.commentId = commentId;
-	saveButton.addEventListener('click', () => {
-		// Get the new comment text and update the UI
-		const newCommentText = inputField.value;
-		const newCommentTextElement = document.createElement('p');
-		newCommentTextElement.classList.add('comment-text');
-		newCommentTextElement.textContent = newCommentText;
-		commentElement.replaceChild(newCommentTextElement, inputField);
-
-		// Update the comment on the server
-		updateComment(commentId, newCommentText);
-
-		// Replace the "Save" button with the "Edit" button
-		commentElement.replaceChild(editButton, saveButton);
-	});
-	commentElement.replaceChild(saveButton, editButton);
+	// Hide the comment text
+	document.querySelector(`#comment-text-id-${commentId}`).classList.add('hidden');
+	// Show the comment edit div
+	document.querySelector(`#comment-edit-id-${commentId}`).classList.remove('hidden');
 }
 
 // Delete a comment
 async function deleteComment(commentId) {
-	const response = await fetch(`/api/blog/${blogData.id}`, {
+	const response = await fetch(`/api/comment/${commentId}`, {
 		method: 'DELETE',
 	});
-	console.log(response);
-	// Redirect to the homepage
-	window.location.reload();
+	if (response.ok) {
+		// Reload the page to update comments view
+		window.location.reload();
+	} else {
+		console.log(response);
+	}
 }
+
+// When editing a comment, setup the event listener for the save and cancel buttons
+const editSaveButtons = document.querySelectorAll('.edit-save-comment');
+editSaveButtons.forEach((button) => {
+	button.addEventListener('click', async () => {
+		const commentId = button.dataset.commentid;
+		// Get the new comment text
+		const newCommentText = document.querySelector(`#comment-edit-text-id-${commentId}`).value;
+		// Update the comment
+		const response = await fetch(`/api/comment/${commentId}`, {
+			method: 'PUT',
+			body: JSON.stringify({ commentText: newCommentText }),
+			headers: { 'Content-Type': 'application/json' },
+		});
+		if (response.ok) {
+			// Reload the page to update comments view
+			window.location.reload();
+		} else {
+			console.log(response);
+		}
+	});
+});
+
+const editCancelButtons = document.querySelectorAll('.edit-cancel-comment');
+editCancelButtons.forEach((button) => {
+	button.addEventListener('click', () => {
+		const commentId = button.dataset.commentid;
+		// Hide the comment edit div
+		document.querySelector(`#comment-edit-id-${commentId}`).classList.add('hidden');
+		// Show the comment text
+		document.querySelector(`#comment-text-id-${commentId}`).classList.remove('hidden');
+	});
+});
 
 // Update a comment on the server
 function updateComment(commentId, newCommentText) {}
