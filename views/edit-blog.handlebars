@@ -44,6 +44,7 @@
 	</form>
 </div>
 <script>
-	const blogData = {{{json blog}}}
+	const blogDataEncoded = "{{{json blog}}}"
+	const blogData = JSON.parse(decodeURIComponent(blogDataEncoded))
 </script>
 <script src="/js/edit-blog.js"></script>

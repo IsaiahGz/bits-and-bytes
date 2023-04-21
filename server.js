@@ -25,7 +25,7 @@ app.use(session(sess));
 const hbs = exphbs.create({
 	helpers: {
 		json: function (context) {
-			return JSON.stringify(context);
+			return encodeURIComponent(JSON.stringify(context));
 		},
 		matches: function (val1, val2) {
 			return val1 === val2;

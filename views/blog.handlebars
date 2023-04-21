@@ -97,7 +97,8 @@
 
 
 <script>
-	const blogData = {{{json blog}}}
+	const blogDataEncoded = "{{{json blog}}}"
+	const blogData = JSON.parse(decodeURIComponent(blogDataEncoded))
 	{{#if loggedIn}}
 		const loggedIn = {{{json loggedIn}}}
 	{{else}}
